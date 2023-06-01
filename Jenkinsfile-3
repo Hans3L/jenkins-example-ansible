@@ -11,7 +11,7 @@ pipeline {
         sh 'ls -la && pwd'
         //def basedir = new File('.').canonicalPath
         //def playbookPath = basedir + '/playbooks/message.yml'
-        def playbookPath = file('playbooks/message.yml').absolutize().toString()
+        //def playbookPath = file('playbooks/message.yml').absolutize().toString()
         //sh 'ansible-playbook message.yml --user ubuntu --private-key=$ANSIBLE_PRIVATE_KEY -e "key=/home/ubuntu/.ssh/id_rsa.pub"'
         sh 'sudo ansible-playbook playbooks/message.yml --user ubuntu --private-key=$ANSIBLE_PRIVATE_KEY -e "key=/home/ubuntu/.ssh/id_rsa.pub"'
         }
