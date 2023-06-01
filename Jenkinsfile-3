@@ -8,7 +8,7 @@ pipeline {
       steps {
         //sh 'ansible-galaxy collection install -r requirements.yml'
         sh 'ls -la && pwd'
-        sh 'ansible-playbook -i inventory/dev.hosts --private-key=$ANSIBLE_PRIVATE_KEY playbooks/message.yml'
+        sh 'ansible-playbook playbooks/message.yml -i inventory/dev.hosts --private-key=$ANSIBLE_PRIVATE_KEY'
       }
     }
   }
