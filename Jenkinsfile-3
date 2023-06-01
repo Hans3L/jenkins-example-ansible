@@ -7,12 +7,12 @@ pipeline {
     stage('Hello') {
       steps {
        script {
-        //sh 'ansible-galaxy collection install -r requirements.yml'
+        sh 'ansible-galaxy collection install -r requirements.yml'
         sh 'ls -la && pwd'
         //def basedir = new File('.').canonicalPath
         //def playbookPath = basedir + '/playbooks/message.yml'
         //def playbookPath = file('playbooks/message.yml').absolutize().toString()
-        sh 'cd ${WORKSPACE} && sudo ansible-playbook ${WORKSPACE}/playbooks/message.yml --user ubuntu -i inventory/dev.hosts --private-key=$ANSIBLE_PRIVATE_KEY -e "key=/home/ubuntu/.ssh/id_rsa.pub"'
+        sh 'cd ${WORKSPACE} && sudo ansible-playbook --user ubuntu -i inventory/dev.hosts --private-key=$ANSIBLE_PRIVATE_KEY -e "key=/home/ubuntu/.ssh/id_rsa.pub" ${WORKSPACE}/playbooks/message.yml'
         //sh 'sudo ansible-playbook "${WORKSPACE}/playbooks/message.yml" --user ubuntu --private-key=$ANSIBLE_PRIVATE_KEY -e "key=/home/ubuntu/.ssh/id_rsa.pub"'
         //sh 'sudo ansible-playbook "/home/ubuntu/playbooks/message.yml" --user ubuntu --private-key=$ANSIBLE_PRIVATE_KEY -e "key=/home/ubuntu/.ssh/id_rsa.pub"'
         }
