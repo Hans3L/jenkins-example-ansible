@@ -9,8 +9,9 @@ pipeline {
        script {
         //sh 'ansible-galaxy collection install -r requirements.yml'
         sh 'ls -la && pwd'
-        def basedir = new File('.').canonicalPath
-        def playbookPath = basedir + '/playbooks/message.yml'
+        //def basedir = new File('.').canonicalPath
+        //def playbookPath = basedir + '/playbooks/message.yml'
+        def playbookPath = file('playbooks/message.yml').getCanonicalPath()
         //sh 'ansible-playbook message.yml --user ubuntu --private-key=$ANSIBLE_PRIVATE_KEY -e "key=/home/ubuntu/.ssh/id_rsa.pub"'
         sh 'ansible-playbook ${playbookPath} --user ubuntu --private-key=$ANSIBLE_PRIVATE_KEY -e "key=/home/ubuntu/.ssh/id_rsa.pub"'
         }
