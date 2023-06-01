@@ -12,7 +12,7 @@ pipeline {
         //def basedir = new File('.').canonicalPath
         //def playbookPath = basedir + '/playbooks/message.yml'
         //def playbookPath = file('playbooks/message.yml').absolutize().toString()
-        sh 'ansible-playbook message.yml --user ubuntu --private-key=$ANSIBLE_PRIVATE_KEY -e "key=/home/ubuntu/.ssh/id_rsa.pub"'
+        sh 'cd ${WORKSPACE} && ansible-playbook message.yml --user ubuntu --private-key=$ANSIBLE_PRIVATE_KEY -e "key=/home/ubuntu/.ssh/id_rsa.pub"'
         //sh 'sudo ansible-playbook "${WORKSPACE}/playbooks/message.yml" --user ubuntu --private-key=$ANSIBLE_PRIVATE_KEY -e "key=/home/ubuntu/.ssh/id_rsa.pub"'
         //sh 'sudo ansible-playbook "/home/ubuntu/playbooks/message.yml" --user ubuntu --private-key=$ANSIBLE_PRIVATE_KEY -e "key=/home/ubuntu/.ssh/id_rsa.pub"'
         }
